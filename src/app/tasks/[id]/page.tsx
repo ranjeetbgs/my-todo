@@ -6,5 +6,5 @@ export default async function Page({
     params: Promise<{ id: string }>
   }) {
     const { id } = await params
-    return <div><Task id={id}/></div>
+    return <div><Task id={parseInt(id)}/></div>
   }

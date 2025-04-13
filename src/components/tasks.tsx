@@ -1,16 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
 
-function Tasks({ taskList , onUpdateTask,onDeleteTask}) {
-  function updateTask(id,isCompleted)
+function Tasks({ taskList , onUpdateTask,onDeleteTask}:{taskList:any , onUpdateTask:any,onDeleteTask:any}) {
+  function updateTask(id:number,isCompleted:boolean)
   {
     onUpdateTask(id,isCompleted)
   }
-  function deleteTask(id)
+  function deleteTask(id:number)
   {
    
-    const tasks = localStorage.getItem('tasks');
-    localStorage.setItem('tasks',JSON.stringify(JSON.parse(tasks).filter((task) => task.id != id)))
+    const tasks = localStorage.getItem('tasks')!;
+    localStorage.setItem('tasks',JSON.stringify(JSON.parse(tasks).filter((task:any) => task.id != id)))
     onDeleteTask()
   }
   return (
@@ -27,7 +27,7 @@ function Tasks({ taskList , onUpdateTask,onDeleteTask}) {
       </thead>
       <tbody>
         {
-          taskList.map((task: any) => {
+          taskList.map((task:any) => {
 
             return <tr key={task.id}>
               <td className=" border-b-1 border-gray-200 px-4 py-2">{task.todo}</td>
@@ -50,7 +50,7 @@ function Tasks({ taskList , onUpdateTask,onDeleteTask}) {
                 <Link href={`/tasks/${task.id}`} className="text-blue-400">View</Link>
               </td>
               <td className=" border-b-1 border-gray-200  px-4 py-2 w-10 text-center">
-                <Link id={task.id} onClick={(e)=>deleteTask(e.target.id)} href={"#"} className="text-red-500">Delete</Link>
+                <Link id={task.id} onClick={(e:any)=>deleteTask(e.target.id)} href={"#"} className="text-red-500">Delete</Link>
               </td>
             </tr>
           })

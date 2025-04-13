@@ -1,14 +1,14 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-function Task({ id }) {
+function Task({ id }:{id:number}) {
 
-  const [task, setTask] = useState(null);
+  const [task, setTask] = useState<any>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const tasks = localStorage.getItem('tasks');
-    setTask(JSON.parse(tasks).filter((task) => task.id == id)[0])
+    const tasks = (localStorage.getItem('tasks')!);
+    setTask(JSON.parse(tasks).filter((task:any) => task.id == id)[0])
     setLoading(false);
 
   }, [])

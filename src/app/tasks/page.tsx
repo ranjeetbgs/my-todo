@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 
 export default function Page() {
 
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
-    const [filteredTasks, setFilteredTasks] = useState([]);
+    const [filteredTasks, setFilteredTasks] = useState<any[]>([])
     const [isUpdate, setIsUpdate] = useState(false);
 
-    function updateStatus(id: Number, isCompleted: boolean) {
+    function updateStatus(id: number, isCompleted: boolean) {
         
 
         const lsTasks = tasks.map(task =>
@@ -77,12 +77,7 @@ export default function Page() {
         </div>
         <div className=" w-full mx-auto overflow-auto">
             {loading && <p>Loading....</p>}
-            {!loading && <Tasks taskList={filteredTasks} onDeleteTask={()=>setIsUpdate(!isUpdate)} onUpdateTask={(id,isCompleted) => updateStatus(id,isCompleted)} />}
+            {!loading && <Tasks taskList={filteredTasks} onDeleteTask={()=>setIsUpdate(!isUpdate)} onUpdateTask={(id:number,isCompleted:boolean) => updateStatus(id,isCompleted)} />}
         </div>
-
     </div>
-
-
-
-
 }

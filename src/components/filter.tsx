@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
-function Filter({ onFilter }) {
+function Filter({ onFilter }:{onFilter:any}) {
     const [value, setValue] = useState("");
 
-    function handleChange(event) {
+    function handleChange(event:any) {
         setValue(event.target.value);
         
       }
